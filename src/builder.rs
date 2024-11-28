@@ -27,11 +27,12 @@ pub struct Builder {
     entries_to_html: Vec<String>,
     single_entries_to_html: Vec<String>,
     overview: Vec<String>,
+    privacy_policy: Vec<String>,
     entries_created: Vec<i64>,
 }
 
 impl Builder {
-    pub fn new(entries: &Vec<Entry>) -> Builder {
+    pub fn new(entries: &Vec<Entry>, privacy_policy: &String) -> Builder {
         let mut builder = Builder {
             www_p: PathBuf::from(PAGE_DIR),
             templates_p: PathBuf::from(PAGE_DIR),
@@ -39,6 +40,7 @@ impl Builder {
             entries_to_html: vec![],
             single_entries_to_html: vec![],
             overview: vec![],
+            privacy_policy: vec![privacy_policy.to_string()],
             entries_created: vec![],
         };
         builder.www_p.push(WWW_DIR);
@@ -50,6 +52,7 @@ impl Builder {
         self.entries_builder();
         self.generic_builder(&self.entries_to_html, "index.html", "");
         self.generic_builder(&self.overview, "overview.html", "");
+        self.generic_builder(&self.privacy_policy, "privacy-policy.html", "");
         self.page_entry_builder();
     }
 

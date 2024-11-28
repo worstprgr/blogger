@@ -3,6 +3,7 @@
 /infra/update_blog.sh
 /page/www/index.html
 /page/www/overview.html
+/page/www/privacy-policy.html
 
 # Livepy
 live.py

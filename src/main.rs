@@ -23,6 +23,7 @@ use clap::Parser;
 mod entry;
 mod updater;
 mod builder;
+mod sites;
 
 
 // TODO: Implement a "purge" option. Which deletes contents of the "www/posts" dir
@@ -91,10 +92,14 @@ fn main() {
 
 
         // collect all *.md entries
-        let mut u = updater::Entries::new(options);
-        let r = u.collect_entries();
+        let mut updater = updater::Entries::new(options);
+        let r = updater.collect_entries();
 
-        let mut b = builder::Builder::new(&r);
+        // Site: Privacy Policy
+        let mut sites = sites::Sites::new();
+        let privacy_policy = sites.privacy_policy();
+
+        let mut b = builder::Builder::new(&r, &privacy_policy);
         b.build();
         exit(0);
     }
