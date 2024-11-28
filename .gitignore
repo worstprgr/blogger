@@ -1,0 +1,9 @@
+/target
+/pages/www/*.html
+/infra/update_blog.sh
+/page/www/index.html
+/page/www/overview.html
+
+# Livepy
+live.py
+live.js

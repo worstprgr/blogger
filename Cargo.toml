@@ -1,0 +1,11 @@
+[package]
+name = "blogger"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.38"
+clap = { version = "4.5.20", features = ["derive"] }
+pulldown-cmark = "0.12.2"
+walkdir = "2.5.0"
+filetime = "0.2"
